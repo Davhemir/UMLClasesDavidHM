@@ -28,9 +28,9 @@ class Conference{
 class BoardMeeting{}
 
 
-AAUOC o-- Location
-AAUOC o-- Event
-AAUOC o-- Person
+AAUOC o-- "0..*" Location
+AAUOC o-- "0..*" Event
+AAUOC o-- "0..*" Person
 
 Event <|-- Conference
 Event <|-- BoardMeeting
@@ -38,10 +38,10 @@ Event <|-- BoardMeeting
 Person <|-- Member
 Member <|-- BoardMember
 
-Member --Event : attendsTo
-Location --Event : isLocatedIn
-Person -- Conference: attendsTo
-BoardMeeting -- BoardMember : attendsTo
+Member "0..*" -- "0..*" Event : attendsTo
+Location "1" -- "0..*" Event : isLocatedIn
+Person "0..*" -- "0..*" Conference: attendsTo
+BoardMeeting "0..*" -- "0..*" BoardMember : attendsTo
 
 
 @enduml
